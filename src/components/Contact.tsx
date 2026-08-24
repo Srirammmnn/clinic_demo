@@ -134,12 +134,17 @@ export default function Contact() {
             <h3 className="text-2xl font-bold text-primary-900 mb-6">Send an Enquiry</h3>
             
             {submitted ? (
-              <div className="bg-green-50 text-green-800 p-6 rounded-xl text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="bg-green-50 text-green-800 p-6 rounded-xl text-center space-y-3">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2">
                   <Send className="w-8 h-8 text-green-600" />
                 </div>
-                <h4 className="text-xl font-bold mb-2">Message Sent!</h4>
-                <p>Thank you for reaching out. Our team will contact you shortly to confirm your appointment.</p>
+                <h4 className="text-xl font-bold">Enquiry Submitted Successfully!</h4>
+                <p className="text-sm text-green-700">
+                  Thank you! Your enquiry has been sent to <strong>sriramcr46@gmail.com</strong>.
+                </p>
+                <div className="bg-white/80 p-3 rounded-lg text-xs text-slate-600 border border-green-200">
+                  📌 <strong>First time receiving emails?</strong> Please check your Gmail <strong>Spam</strong> or <strong>Promotions</strong> folder for a confirmation link from <em>FormSubmit</em> to activate instant delivery!
+                </div>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
