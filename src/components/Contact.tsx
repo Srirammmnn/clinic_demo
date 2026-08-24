@@ -11,21 +11,46 @@ export default function Contact() {
   
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate API call
-    setTimeout(() => {
+    setErrorMsg('');
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/sriramcr46@gmail.com", {
+        method: "POST",
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          _subject: `New Clinic Consultation Enquiry from ${formData.name}`,
+          Name: formData.name,
+          Phone: formData.phone,
+          Email: formData.email || 'Not provided',
+          Message: formData.message
+        })
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success !== "false") {
+        setSubmitted(true);
+        setFormData({ name: '', phone: '', email: '', message: '' });
+      } else {
+        setErrorMsg('Failed to send enquiry. Please try again or call us directly.');
+      }
+    } catch (err) {
+      setErrorMsg('Network error. Please try again or contact us via WhatsApp.');
+    } finally {
       setIsSubmitting(false);
-      setSubmitted(true);
-      setFormData({ name: '', phone: '', email: '', message: '' });
-      setTimeout(() => setSubmitted(false), 5000);
-    }, 1500);
+    }
   };
 
   return (
@@ -116,6 +141,11 @@ export default function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
+                {errorMsg && (
+                  <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl text-sm">
+                    {errorMsg}
+                  </div>
+                )}
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1">Full Name *</label>
                   <input
