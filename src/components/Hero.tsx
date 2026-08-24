@@ -4,16 +4,11 @@ import Hero3D from './Hero3D';
 export default function Hero() {
   return (
     <section id="home" className="relative min-h-[100svh] pt-32 pb-20 flex items-center overflow-hidden bg-bg-light">
-      {/* 3D Background/Element - Desktop Only */}
-      <div className="hidden lg:block absolute top-0 bottom-0 right-0 left-[45%] z-0">
-        <Hero3D />
-      </div>
-
       <div className="container mx-auto px-6 md:px-12 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
           {/* Left Content */}
-          <div className="max-w-2xl flex flex-col justify-between min-h-[60vh] lg:min-h-0">
+          <div className="max-w-2xl flex flex-col justify-between min-h-[60vh] md:min-h-0">
             <div>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -89,8 +84,10 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right Column Spacer on Desktop */}
-          <div className="hidden lg:block h-[600px] pointer-events-none" />
+          {/* Right 3D Element (Desktop/Tablet Only) */}
+          <div className="hidden md:block relative w-full h-[500px] lg:h-[600px] z-10">
+            <Hero3D />
+          </div>
 
         </div>
       </div>

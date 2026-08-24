@@ -81,7 +81,7 @@ function DNAHelix() {
 
 export default function Hero3D() {
   return (
-    <div className="absolute inset-0 z-0">
+    <div className="w-full h-full min-h-[450px] relative">
       <Canvas
         camera={{ position: [0, 0, 8], fov: 40 }}
         gl={{ antialias: true, alpha: true }}
