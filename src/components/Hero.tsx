@@ -4,6 +4,11 @@ import Hero3D from './Hero3D';
 export default function Hero() {
   return (
     <section id="home" className="relative min-h-[100svh] pt-32 pb-20 flex items-center overflow-hidden bg-bg-light">
+      {/* 3D Background/Element - Desktop Only */}
+      <div className="hidden lg:block absolute top-0 bottom-0 right-0 left-[45%] z-0">
+        <Hero3D />
+      </div>
+
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
@@ -84,10 +89,8 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right 3D Element on Desktop */}
-          <div className="hidden md:block relative h-[500px] lg:h-[600px] w-full">
-            <Hero3D />
-          </div>
+          {/* Right Column Spacer on Desktop */}
+          <div className="hidden lg:block h-[600px] pointer-events-none" />
 
         </div>
       </div>
