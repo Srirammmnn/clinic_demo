@@ -15,7 +15,7 @@ import StickyMobileButtons from './components/StickyMobileButtons';
 
 function App() {
   return (
-    <div className="min-h-screen bg-bg-light font-sans text-primary-900 selection:bg-medical-500 selection:text-white pb-16 md:pb-0">
+    <div className="min-h-screen bg-bg-light font-sans text-primary-900 selection:bg-medical-500 selection:text-white">
       <Navbar />
       
       <main>

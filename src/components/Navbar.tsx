@@ -21,23 +21,33 @@ export default function Navbar() {
     { name: 'Services', href: '#services' },
     { name: 'Facilities', href: '#facilities' },
     { name: 'Reviews', href: '#reviews' },
-    { name: 'Contact', href: '#contact' },
   ];
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'
+        isScrolled ? 'bg-bg-light/95 backdrop-blur-md shadow-sm py-4' : 'bg-bg-light/70 backdrop-blur-sm py-6'
       }`}
     >
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
-        <a href="#home" className="flex flex-col z-50 relative">
-          <span className={`text-xl font-bold tracking-wider leading-none ${isScrolled ? 'text-primary-900' : 'text-primary-900'}`}>
-            AURELIS
-          </span>
-          <span className={`text-sm tracking-[0.2em] leading-none mt-1 ${isScrolled ? 'text-medical-600' : 'text-medical-600'}`}>
-            HEALTH
-          </span>
+        <a href="#home" className="flex items-center gap-3 z-50 relative">
+          <img 
+            src="/logo1.png" 
+            alt="Aurelis Health" 
+            className="w-10 h-10 object-contain"
+            onError={(e) => {
+              // Hide image if it hasn't been uploaded yet to prevent broken image icon
+              (e.target as HTMLImageElement).style.display = 'none';
+            }}
+          />
+          <div className="flex flex-col">
+            <span className={`text-xl font-bold tracking-wider leading-none text-primary-900`}>
+              AURELIS
+            </span>
+            <span className={`text-sm tracking-[0.2em] leading-none mt-1 text-primary-800`}>
+              HEALTH
+            </span>
+          </div>
         </a>
 
         {/* Desktop Nav */}
@@ -54,7 +64,7 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="#appointment"
+            href="#contact"
             className="bg-primary-900 hover:bg-medical-600 text-white px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 transform hover:scale-105"
           >
             Book Appointment
@@ -95,7 +105,7 @@ export default function Navbar() {
                 </a>
               ))}
               <a
-                href="#appointment"
+                href="#contact"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="bg-primary-900 text-white px-8 py-3 rounded-full text-lg font-medium mt-4"
               >

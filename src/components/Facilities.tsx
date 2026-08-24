@@ -7,7 +7,7 @@ const facilities = [
     id: 1,
     title: "Modern Reception",
     desc: "A welcoming, calm environment designed to put you at ease from the moment you arrive.",
-    image: "https://images.unsplash.com/photo-1538108149393-cebb47acddb2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1551076805-e1869033e561?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
     className: "md:col-span-2 md:row-span-2"
   },
   {
@@ -29,7 +29,7 @@ const facilities = [
     title: "Consultation Rooms",
     desc: "Private, comfortable spaces for detailed discussions with your specialists.",
     image: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-    className: "md:col-span-1 md:row-span-2"
+    className: "md:col-span-1 md:row-span-1"
   },
   {
     id: 5,

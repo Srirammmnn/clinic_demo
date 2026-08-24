@@ -24,7 +24,7 @@ const specialists = [
     role: "Dermatologist",
     exp: "12+ Years Experience",
     desc: "Expert in clinical dermatology and advanced laser treatments for complex skin conditions.",
-    image: "https://images.unsplash.com/photo-1594824436998-058a23124262?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    image: "/4th.webp"
   },
   {
     id: 4,
