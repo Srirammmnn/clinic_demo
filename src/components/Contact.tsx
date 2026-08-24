@@ -134,12 +134,14 @@ export default function Contact() {
             <h3 className="text-2xl font-bold text-primary-900 mb-6">Send an Enquiry</h3>
             
             {submitted ? (
-              <div className="bg-green-50 text-green-800 p-6 rounded-xl text-center">
+              <div className="bg-green-50 text-green-800 p-8 rounded-xl text-center space-y-3">
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Send className="w-8 h-8 text-green-600" />
                 </div>
-                <h4 className="text-xl font-bold mb-2">Message Sent!</h4>
-                <p>Thank you for reaching out. Our team will contact you shortly to confirm your appointment.</p>
+                <h4 className="text-2xl font-bold text-primary-900">Message Sent Successfully!</h4>
+                <p className="text-slate-600 max-w-md mx-auto">
+                  Thank you for reaching out. Our team has received your enquiry and will contact you shortly.
+                </p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
