@@ -87,8 +87,6 @@ export default function Hero3D() {
         gl={{ antialias: true, alpha: true }}
         dpr={[1, 2]}
       >
-        <color attach="background" args={['#f4f1ea']} />
-        
         {/* Dynamic Studio Lighting */}
         <ambientLight intensity={1.5} />
         <directionalLight position={[5, 10, 5]} intensity={2.5} color="#ffffff" castShadow />
