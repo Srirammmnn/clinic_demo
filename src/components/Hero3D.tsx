@@ -1,15 +1,11 @@
 import { useRef, useMemo, useState } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { Canvas, useFrame } from '@react-three/fiber';
 import { Float, OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 
 function DNAHelix() {
   const groupRef = useRef<THREE.Group>(null);
   const [hovered, setHovered] = useState(false);
-  const { viewport } = useThree();
-  
-  // Dramatically scale down on mobile screens (viewport.width is typically ~3 on mobile)
-  const baseScale = Math.min(1, viewport.width / 8); 
 
   useFrame((state) => {
     if (groupRef.current) {
@@ -23,8 +19,8 @@ function DNAHelix() {
       groupRef.current.rotation.x = THREE.MathUtils.lerp(groupRef.current.rotation.x, targetTiltX, 0.05);
       groupRef.current.rotation.z = THREE.MathUtils.lerp(groupRef.current.rotation.z, targetTiltZ, 0.05);
 
-      // Interactive scale pulse when hovered, accounting for responsive baseScale
-      const targetScale = (hovered ? 1.1 : 1.0) * baseScale;
+      // Interactive scale pulse when hovered
+      const targetScale = hovered ? 1.1 : 1.0;
       groupRef.current.scale.x = THREE.MathUtils.lerp(groupRef.current.scale.x, targetScale, 0.1);
       groupRef.current.scale.y = THREE.MathUtils.lerp(groupRef.current.scale.y, targetScale, 0.1);
       groupRef.current.scale.z = THREE.MathUtils.lerp(groupRef.current.scale.z, targetScale, 0.1);

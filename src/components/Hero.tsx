@@ -9,11 +9,11 @@ export default function Hero() {
         <Hero3D />
       </div>
 
-      <div className="container mx-auto px-6 md:px-12 relative z-10 pointer-events-none">
+      <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           
           {/* Left Content */}
-          <div className="max-w-2xl flex flex-col justify-between min-h-[60vh] lg:min-h-0 pointer-events-auto bg-white/40 md:bg-transparent backdrop-blur-md md:backdrop-blur-none p-6 rounded-3xl md:p-0 md:rounded-none mt-12 md:mt-0 shadow-xl md:shadow-none border border-white/50 md:border-transparent">
+          <div className="max-w-2xl flex flex-col justify-between min-h-[60vh] lg:min-h-0">
             <div>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
