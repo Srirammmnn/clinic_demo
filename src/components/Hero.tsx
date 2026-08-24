@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <section id="home" className="relative min-h-[100svh] pt-32 pb-20 flex items-center overflow-hidden bg-bg-light">
       {/* 3D Background/Element */}
-      <div className="absolute inset-0 right-0 lg:left-[45%] z-0">
+      <div className="hidden lg:block absolute inset-0 right-0 lg:left-[45%] z-0">
         <Hero3D />
       </div>
 
