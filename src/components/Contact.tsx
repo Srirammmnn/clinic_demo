@@ -23,31 +23,33 @@ export default function Contact() {
     setErrorMsg('');
 
     try {
+      const dataToSend = new FormData();
+      dataToSend.append("Name", formData.name);
+      dataToSend.append("Phone", formData.phone);
+      dataToSend.append("Email", formData.email || "Not provided");
+      dataToSend.append("Message", formData.message);
+      dataToSend.append("_subject", `New Clinic Consultation Enquiry from ${formData.name}`);
+      dataToSend.append("_captcha", "false");
+      dataToSend.append("_template", "table");
+
       const response = await fetch("https://formsubmit.co/ajax/sriramcr46@gmail.com", {
         method: "POST",
+        body: dataToSend,
         headers: { 
-          'Content-Type': 'application/json',
           'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          _subject: `New Clinic Consultation Enquiry from ${formData.name}`,
-          Name: formData.name,
-          Phone: formData.phone,
-          Email: formData.email || 'Not provided',
-          Message: formData.message
-        })
+        }
       });
 
       const data = await response.json();
 
-      if (response.ok && data.success !== "false") {
+      if (response.ok || data.success === "true" || data.success === true) {
         setSubmitted(true);
         setFormData({ name: '', phone: '', email: '', message: '' });
       } else {
-        setErrorMsg('Failed to send enquiry. Please try again or call us directly.');
+        setErrorMsg(data.message || 'Failed to send enquiry. Please try again or contact us via WhatsApp.');
       }
     } catch (err) {
-      setErrorMsg('Network error. Please try again or contact us via WhatsApp.');
+      setErrorMsg('Network error. Please check your connection or contact us via WhatsApp.');
     } finally {
       setIsSubmitting(false);
     }
