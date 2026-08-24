@@ -45,9 +45,14 @@ function DNAHelix() {
   return (
     <group 
       ref={groupRef}
-      onPointerOver={() => setHovered(true)}
-      onPointerOut={() => setHovered(false)}
-      cursor={hovered ? "pointer" : "auto"}
+      onPointerOver={() => {
+        setHovered(true);
+        document.body.style.cursor = 'pointer';
+      }}
+      onPointerOut={() => {
+        setHovered(false);
+        document.body.style.cursor = 'auto';
+      }}
     >
       {pairs.map((pair, i) => (
         <group key={i} position={[0, pair.y, 0]} rotation={[0, -pair.angle, 0]}>
