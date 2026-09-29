@@ -34,15 +34,15 @@ function DNAStrand() {
         <group key={idx} position={[0, pair.y, 0]} rotation={[0, -pair.angle, 0]}>
           <mesh position={[radius, 0, 0]}>
             <sphereGeometry args={[0.26, 16, 16]} />
-            <meshStandardMaterial color="#122822" roughness={0.15} metalness={0.6} />
+            <meshStandardMaterial color="#0284c7" roughness={0.15} metalness={0.6} />
           </mesh>
           <mesh position={[-radius, 0, 0]}>
             <sphereGeometry args={[0.26, 16, 16]} />
-            <meshStandardMaterial color="#122822" roughness={0.15} metalness={0.6} />
+            <meshStandardMaterial color="#06b6d4" roughness={0.15} metalness={0.6} />
           </mesh>
           <mesh rotation={[0, 0, Math.PI / 2]}>
             <cylinderGeometry args={[0.05, 0.05, radius * 2]} />
-            <meshStandardMaterial color="#bfa37c" roughness={0.25} metalness={0.8} />
+            <meshStandardMaterial color="#38bdf8" roughness={0.25} metalness={0.8} />
           </mesh>
         </group>
       ))}
@@ -60,8 +60,8 @@ export default function Hero3D() {
       >
         <ambientLight intensity={1.8} />
         <directionalLight position={[10, 10, 10]} intensity={2.5} color="#ffffff" />
-        <directionalLight position={[-10, -10, -10]} intensity={1.2} color="#bfa37c" />
-        <pointLight position={[0, 0, 6]} intensity={1.5} color="#122822" />
+        <directionalLight position={[-10, -10, -10]} intensity={1.2} color="#38bdf8" />
+        <pointLight position={[0, 0, 6]} intensity={1.5} color="#0284c7" />
         
         <DNAStrand />
         

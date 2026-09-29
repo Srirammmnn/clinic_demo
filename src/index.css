@@ -1,14 +1,17 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary-900: #122822; /* Dark Forest Green */
-  --color-primary-800: #1a3b32;
-  --color-primary-700: #2c584a;
-  --color-medical-600: #122822;
-  --color-medical-500: #1a3b32;
-  --color-accent-400: #bfa37c; /* Gold/Sand */
-  --color-accent-300: #d4bc96;
-  --color-bg-light: #f4f1ea; /* Beige */
+  --color-primary-900: #0f172a; /* Deep Clinical Navy */
+  --color-primary-800: #1e293b;
+  --color-primary-700: #334155;
+  --color-primary-600: #475569;
+  --color-medical-600: #0284c7; /* Precision Blue */
+  --color-medical-500: #06b6d4; /* Clinical Cyan */
+  --color-medical-400: #38bdf8;
+  --color-accent-400: #0284c7; /* Sapphire Cyan Accent */
+  --color-accent-300: #38bdf8;
+  --color-accent-500: #0d9488; /* Medical Emerald/Teal */
+  --color-bg-light: #f8fafc; /* Crisp Pristine Ice Blue Light */
   --color-bg-white: #ffffff;
   
   --font-sans: 'Inter', system-ui, sans-serif;
@@ -20,25 +23,25 @@
 
 @layer base {
   :root {
-    --background: #f4f1ea;
-    --foreground: #122822;
-    --primary: #122822;
+    --background: #f8fafc;
+    --foreground: #0f172a;
+    --primary: #0f172a;
     --primary-foreground: #ffffff;
-    --secondary: #1a3b32;
+    --secondary: #0284c7;
     --secondary-foreground: #ffffff;
-    --accent: #bfa37c;
-    --accent-foreground: #122822;
+    --accent: #06b6d4;
+    --accent-foreground: #ffffff;
   }
   
   .dark {
-    --background: #122822;
-    --foreground: #f4f1ea;
+    --background: #0f172a;
+    --foreground: #f8fafc;
     --primary: #ffffff;
-    --primary-foreground: #122822;
-    --secondary: #1a3b32;
+    --primary-foreground: #0f172a;
+    --secondary: #0284c7;
     --secondary-foreground: #ffffff;
-    --accent: #bfa37c;
-    --accent-foreground: #122822;
+    --accent: #06b6d4;
+    --accent-foreground: #ffffff;
   }
 }
 
@@ -61,27 +64,115 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--background);
+  background: #f1f5f9;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary);
+  background: #0284c7;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--secondary);
+  background: #0369a1;
 }
 
-/* Utilities for Glassmorphism */
+/* Glassmorphism & Utilities */
 .glass {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
 }
 
-.dark .glass {
-  background: rgba(15, 23, 42, 0.7);
+.glass-dark {
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Impressive Custom Button & Interaction Styling */
+.btn-medical-primary {
+  background: linear-gradient(135deg, #0284c7 0%, #06b6d4 50%, #0284c7 100%);
+  background-size: 200% auto;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 9999px;
+  padding: 0.75rem 1.75rem;
+  box-shadow: 0 4px 14px 0 rgba(2, 132, 199, 0.35);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-medical-primary:hover {
+  background-position: right center;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px 0 rgba(2, 132, 199, 0.5);
+}
+
+.btn-medical-primary:active {
+  transform: translateY(0);
+}
+
+.btn-medical-secondary {
+  background: #0f172a;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 9999px;
+  padding: 0.75rem 1.75rem;
+  box-shadow: 0 4px 12px 0 rgba(15, 23, 42, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-medical-secondary:hover {
+  background: #1e293b;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px 0 rgba(15, 23, 42, 0.35);
+}
+
+.btn-medical-outline {
+  background: transparent;
+  color: #0f172a;
+  border: 2px solid rgba(2, 132, 199, 0.3);
+  font-weight: 600;
+  border-radius: 9999px;
+  padding: 0.75rem 1.75rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-medical-outline:hover {
+  border-color: #0284c7;
+  background: rgba(2, 132, 199, 0.06);
+  color: #0284c7;
+  transform: translateY(-2px);
+}
+
+/* Pulsing Badge Indicator */
+@keyframes medicalPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(2, 132, 199, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(2, 132, 199, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(2, 132, 199, 0);
+  }
+}
+
+.pulse-medical {
+  animation: medicalPulse 2s infinite;
 }

@@ -1,27 +1,27 @@
 import { useState } from 'react';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import { ChevronDown, ChevronUp, HelpCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const faqs = [
   {
     question: 'Do you accept walk-in patients?',
-    answer: 'Yes, we accept walk-in patients. However, we highly recommend booking an appointment to minimize your waiting time, as priority is given to scheduled visits and emergencies.'
+    answer: 'Yes, we accept emergency walk-in patients. However, for specialized diagnostic consultations, we highly recommend booking an appointment online to minimize wait times.'
   },
   {
-    question: 'What insurance plans do you accept?',
-    answer: 'We accept most major insurance plans including BlueCross, Aetna, Cigna, and Medicare. Please contact our front desk with your specific insurance details to verify coverage before your visit.'
+    question: 'What health insurance and cashless plans do you accept?',
+    answer: 'We collaborate with major health insurance providers and TPA desks. Our desk handles cashless pre-authorizations seamlessly.'
   },
   {
-    question: 'How do I get my test results?',
-    answer: 'Test results are typically available within 24-48 hours. Our doctors will personally call you if there are any critical findings. You can also collect physical copies from our front desk during working hours.'
+    question: 'How quickly are diagnostic laboratory test results delivered?',
+    answer: 'Routine diagnostic blood panels and imaging results are available within 4 to 12 hours. Critical diagnostic alerts are notified immediately by our team.'
   },
   {
-    question: 'Do you offer telemedicine consultations?',
-    answer: 'Yes, we offer secure video consultations for follow-ups, minor ailments, and prescription refills. You can book a tele-consultation through our website or by calling us directly.'
+    question: 'Do you offer online video consultations?',
+    answer: 'Yes, our senior doctors conduct secure video consultations for follow-up visits, second opinions, and prescription renewals.'
   },
   {
-    question: 'What should I bring to my first appointment?',
-    answer: 'Please bring your valid photo ID, insurance card, a list of current medications, and any relevant past medical records or test results.'
+    question: 'What documents should I bring to my first appointment?',
+    answer: 'Please bring your valid photo ID, active insurance card, previous medical history summaries, and current medication lists.'
   }
 ];
 
@@ -33,12 +33,18 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="py-20 bg-white">
+    <section id="faq" className="py-24 bg-white relative">
       <div className="container mx-auto px-6 md:px-12 max-w-4xl">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary-900 mb-4">Frequently Asked Questions</h2>
+          <span className="text-xs font-mono font-bold tracking-widest uppercase text-cyan-700 bg-cyan-50 border border-cyan-200/80 px-3.5 py-1.5 rounded-full inline-flex items-center gap-1.5 mb-4">
+            <HelpCircle className="w-4 h-4 text-cyan-600" />
+            <span>Help & Answers</span>
+          </span>
+          <h2 className="text-4xl lg:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">
+            Frequently Asked Questions
+          </h2>
           <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-            Find answers to common questions about our clinic, services, and policies. If you need more information, feel free to contact us.
+            Clear information regarding appointment scheduling, diagnostics, insurance, and medical care.
           </p>
         </div>
 
@@ -46,18 +52,28 @@ export default function FAQ() {
           {faqs.map((faq, index) => (
             <div 
               key={index} 
-              className="border border-slate-200 rounded-xl overflow-hidden hover:border-medical-500 transition-colors"
+              className={`border rounded-2xl overflow-hidden transition-all duration-300 ${
+                openIndex === index 
+                  ? 'border-cyan-500 bg-cyan-50/20 shadow-md' 
+                  : 'border-slate-200 hover:border-cyan-300 bg-white'
+              }`}
             >
               <button
-                className="w-full px-6 py-4 text-left flex justify-between items-center bg-white focus:outline-none"
+                className="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none group"
                 onClick={() => toggleFaq(index)}
               >
-                <span className="font-semibold text-primary-900 text-lg">{faq.question}</span>
-                {openIndex === index ? (
-                  <ChevronUp className="w-5 h-5 text-medical-600 shrink-0" />
-                ) : (
-                  <ChevronDown className="w-5 h-5 text-slate-400 shrink-0" />
-                )}
+                <span className="font-bold text-slate-900 text-lg group-hover:text-cyan-700 transition-colors">
+                  {faq.question}
+                </span>
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
+                  openIndex === index ? 'bg-cyan-600 text-white' : 'bg-slate-100 text-slate-500 group-hover:bg-cyan-100 group-hover:text-cyan-700'
+                }`}>
+                  {openIndex === index ? (
+                    <ChevronUp className="w-5 h-5 shrink-0" />
+                  ) : (
+                    <ChevronDown className="w-5 h-5 shrink-0" />
+                  )}
+                </div>
               </button>
               
               <AnimatePresence>
@@ -68,7 +84,7 @@ export default function FAQ() {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="px-6 pb-5 text-slate-600 border-t border-slate-100 pt-3">
+                    <div className="px-6 pb-6 text-slate-600 border-t border-slate-200/50 pt-4 text-base leading-relaxed">
                       {faq.answer}
                     </div>
                   </motion.div>

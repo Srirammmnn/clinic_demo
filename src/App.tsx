@@ -10,6 +10,7 @@ import Facilities from './components/Facilities';
 import Testimonials from './components/Testimonials';
 import Insights from './components/Insights';
 import FAQ from './components/FAQ';
+import Appointment from './components/Appointment';
 import Contact from './components/Contact';
 import StickyMobileButtons from './components/StickyMobileButtons';
 
@@ -29,6 +30,7 @@ function App() {
         <Testimonials />
         <Insights />
         <FAQ />
+        <Appointment />
         <Contact />
       </main>
 
